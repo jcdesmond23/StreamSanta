@@ -108,7 +108,7 @@ export default function Form() {
                         required: 'This is required',
                     })}
                     >
-                        <option value='2'>Feel Goog</option>
+                        <option value='2'>Feel Good</option>
                         <option value='1'>I Don't Care</option>
                         <option value='0'>Emotionally Complex</option>
                     </Select>
