@@ -7,6 +7,7 @@ import {
   SimpleGrid,
   GridItem,
 } from '@chakra-ui/react'
+import axios from 'axios';
 
 export default function Form() {
   const years = [];
@@ -24,7 +25,9 @@ export default function Form() {
     formState: { errors, isSubmitting },
   } = useForm()
 
-  function onSubmit(values) {
+  const onSubmit = async (values) => {
+    const test = await axios.post('http://localhost:9090/watson', values);
+    console.log(test.data);
     return new Promise((resolve) => {
       setTimeout(() => {
         alert(JSON.stringify(values, null, 2))
