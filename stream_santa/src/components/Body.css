@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap');
+
 .body {
     width: 100%;
     height: 100%;
@@ -11,6 +13,6 @@
 }
 
 .h1 {
-    font-family: 'Sensei';
+    font-family: 'Mountains of Christmas';
     font-size: 70px;
 }
