@@ -2,18 +2,20 @@ import { useForm } from 'react-hook-form'
 import {
   Select,
   FormErrorMessage,
-  FormLabel,
   FormControl,
-  Input,
   Button,
   SimpleGrid,
   GridItem,
 } from '@chakra-ui/react'
 
 export default function Form() {
-  const defaultOptions = [];
-  for (let i = 1901; i <= 2022; i += 1) {
-    defaultOptions.push(i);
+  const years = [];
+  for (let i = 2022; i >= 1901; i -= 1) {
+    years.push(i);
+  }
+  const runtimes = [];
+  for (let i = 250; i >= 1; i -= 1) {
+    runtimes.push(i);
   }
 
   const {
@@ -33,18 +35,85 @@ export default function Form() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <SimpleGrid minChildWidth='120px' spacing='40px' columns={6}>
+      <SimpleGrid minChildWidth='120px' spacing='40px' columns={8}>
+            <GridItem>
+                <FormControl isInvalid={errors.type}>
+                    <Select
+                    id='type'
+                    placeholder='Type'
+                    bg='white'
+                    borderColor='red.300'
+                    color='red'
+                    focusBorderColor='red'
+                    {...register('type', {
+                        required: 'This is required',
+                    })}
+                    >
+                        <option value='MOVIE'>Movie</option>  
+                        <option value='SHOW'>TV Show</option>
+                    </Select>
+                    <FormErrorMessage>
+                    {errors.type && errors.type.message}
+                    </FormErrorMessage>
+                </FormControl>
+            </GridItem>
             <GridItem>
                 <FormControl isInvalid={errors.genre}>
                     <Select
                     id='genre'
                     placeholder='Genre'
+                    bg='white'
+                    borderColor='red.300'
+                    color='red'
+                    focusBorderColor='red'
                     {...register('genre', {
                         required: 'This is required',
                     })}
-                    />
+                    >
+                        <option value='action'>Action</option>
+                        <option value='animation'>Animation</option>
+                        <option value='comedy'>Comedy</option> 
+                        <option value='crime'>Crime</option>  
+                        <option value='documentation'>Documentary</option>  
+                        <option value='drama'>Drama</option>  
+                        <option value='european'>European</option> 
+                        <option value='family'>Family</option> 
+                        <option value='fantasy'>Fantasy</option> 
+                        <option value='history'>History</option> 
+                        <option value='horror'>Horror</option> 
+                        <option value='music'>Music</option>  
+                        <option value='reality'>Reality</option>
+                        <option value='romance'>Romance</option>
+                        <option value='scifi'>Sci-Fi</option>
+                        <option value='sport'>Sport</option>
+                        <option value='thriller'>Thriller</option>
+                        <option value='war'>War</option>
+                        <option value='western'>Western</option>
+                    </Select>
                     <FormErrorMessage>
                     {errors.genre && errors.genre.message}
+                    </FormErrorMessage>
+                </FormControl>
+            </GridItem>
+            <GridItem>
+                <FormControl isInvalid={errors.mood}>
+                    <Select
+                    id='mood'
+                    placeholder='Mood'
+                    bg='white'
+                    borderColor='red.300'
+                    color='red'
+                    focusBorderColor='red'
+                    {...register('mood', {
+                        required: 'This is required',
+                    })}
+                    >
+                        <option value='2'>Feel Goog</option>
+                        <option value='1'>I Don't Care</option>
+                        <option value='0'>Emotionally Complex</option>
+                    </Select>
+                    <FormErrorMessage>
+                    {errors.mood && errors.mood.message}
                     </FormErrorMessage>
                 </FormControl>
             </GridItem>
@@ -53,6 +122,10 @@ export default function Form() {
                     <Select
                     id='country'
                     placeholder='Country'
+                    bg='white'
+                    borderColor='red.300'
+                    color='red'
+                    focusBorderColor='red'
                     {...register('country', {
                         required: 'This is required',
                     })}
@@ -70,10 +143,18 @@ export default function Form() {
                     <Select
                     id='release'
                     placeholder='Release Year'
+                    bg='white'
+                    borderColor='red.300'
+                    color='red'
+                    focusBorderColor='red'
                     {...register('release', {
                         required: 'This is required',
                     })}
-                    />
+                    >
+                        {years.map((y) => (
+                             <option value={y}>{y}</option>
+                        ))}
+                    </Select>
                     <FormErrorMessage>
                     {errors.release && errors.release.message}
                     </FormErrorMessage>
@@ -84,6 +165,10 @@ export default function Form() {
                     <Select
                     id='rating'
                     placeholder='Rating'
+                    bg='white'
+                    borderColor='red.300'
+                    color='red'
+                    focusBorderColor='red'
                     {...register('rating', {
                         required: 'This is required',
                     })}
@@ -108,39 +193,29 @@ export default function Form() {
                 </FormControl>
             </GridItem>
             <GridItem>
-                <FormControl isInvalid={errors.type}>
+                <FormControl isInvalid={errors.runtime}>
                     <Select
-                    id='type'
-                    placeholder='Type'
-                    {...register('type', {
+                    id='runtime'
+                    placeholder='Runtime'
+                    bg='white'
+                    borderColor='red.300'
+                    color='red'
+                    focusBorderColor='red'
+                    {...register('runtime', {
                         required: 'This is required',
                     })}
                     >
-                        <option value='MOVIE'>Movie</option>  
-                        <option value='SHOW'>TV Show</option>
+                        {runtimes.map((time) => (
+                             <option value={time}>{time}</option>
+                        ))}
                     </Select>
-                    <FormErrorMessage>
-                    {errors.type && errors.type.message}
-                    </FormErrorMessage>
-                </FormControl>
-            </GridItem>
-            <GridItem>
-                <FormControl isInvalid={errors.runtime}>
-                    <Input
-                    id='runtime'
-                    placeholder='Runtime'
-                    {...register('runtime', {
-                        required: 'This is required',
-                        minLength: { value: 4, message: 'Minimum length should be 4' },
-                    })}
-                    />
                     <FormErrorMessage>
                     {errors.runtime && errors.runtime.message}
                     </FormErrorMessage>
                 </FormControl>
             </GridItem>
-            <GridItem>
-                <Button mt={4} colorScheme='green' isLoading={isSubmitting} type='submit'>
+            <GridItem colSpan={1}>
+                <Button mt={4} colorScheme='red' isLoading={isSubmitting} type='submit' margin={0} w='full'>
                     Submit
                 </Button>
             </GridItem>
