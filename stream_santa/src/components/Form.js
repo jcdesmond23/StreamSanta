@@ -1,4 +1,3 @@
-import { useForm } from 'react-hook-form'
 import { useForm } from 'react-hook-form';
 import { Context } from './Store';
 import {
@@ -8,7 +7,6 @@ import {
   Button,
   SimpleGrid,
   GridItem,
-} from '@chakra-ui/react'
 } from '@chakra-ui/react';
 import axios from 'axios';
 import { useContext } from 'react';
@@ -34,21 +32,17 @@ export default function Form() {
   const onSubmit = async (values) => {
     const test = await axios.post('http://localhost:9090/watson', values);
     console.log(test);
-<<<<<<< Updated upstream
+    setService(test);
     return new Promise((resolve) => {
       setTimeout(() => {
         alert(JSON.stringify(values, null, 2))
         resolve()
       }, 3000)
     })
-=======
-    setService(result.predictions);
->>>>>>> Stashed changes
-  }
+}
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <SimpleGrid minChildWidth='120px' spacing='40px' columns={8}>
       <SimpleGrid minChildWidth='100px' spacing='40px' columns={8}>
             <GridItem>
                 <FormControl isInvalid={errors.type}>
@@ -56,9 +50,6 @@ export default function Form() {
                     id='type'
                     placeholder='Type'
                     bg='white'
-                    borderColor='red.300'
-                    color='red'
-                    focusBorderColor='red'
                     borderColor='green'
                     color='black'
                     focusBorderColor='red.500'
@@ -80,9 +71,6 @@ export default function Form() {
                     id='genre'
                     placeholder='Genre'
                     bg='white'
-                    borderColor='red.300'
-                    color='red'
-                    focusBorderColor='red'
                     borderColor='green'
                     color='black'
                     focusBorderColor='red.500'
@@ -121,9 +109,6 @@ export default function Form() {
                     id='mood'
                     placeholder='Mood'
                     bg='white'
-                    borderColor='red.300'
-                    color='red'
-                    focusBorderColor='red'
                     borderColor='green'
                     color='black'
                     focusBorderColor='red.500'
@@ -132,7 +117,6 @@ export default function Form() {
                     })}
                     >
                         <option value='2'>Feel Good</option>
-                        <option value='1'>I Don't Care</option>
                         <option value='1'>Indifferent</option>
                         <option value='0'>Emotionally Complex</option>
                     </Select>
@@ -147,9 +131,6 @@ export default function Form() {
                     id='country'
                     placeholder='Country'
                     bg='white'
-                    borderColor='red.300'
-                    color='red'
-                    focusBorderColor='red'
                     borderColor='green'
                     color='black'
                     focusBorderColor='red.500'
@@ -171,9 +152,9 @@ export default function Form() {
                     id='release'
                     placeholder='Release Year'
                     bg='white'
-                    borderColor='red.300'
-                    color='red'
-                    focusBorderColor='red'
+                    borderColor='green'
+                    color='black'
+                    focusBorderColor='red.500'
                     {...register('release', {
                         required: 'This is required',
                     })}
@@ -193,9 +174,6 @@ export default function Form() {
                     id='rating'
                     placeholder='Rating'
                     bg='white'
-                    borderColor='red.300'
-                    color='red'
-                    focusBorderColor='red'
                     borderColor='green'
                     color='black'
                     focusBorderColor='red.500'
@@ -228,9 +206,6 @@ export default function Form() {
                     id='runtime'
                     placeholder='Runtime'
                     bg='white'
-                    borderColor='red.300'
-                    color='red'
-                    focusBorderColor='red'
                     borderColor='green'
                     color='black'
                     focusBorderColor='red.500'

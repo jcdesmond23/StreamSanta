@@ -17,13 +17,11 @@ const theme = extendTheme({
 
 function App() {
   return (
-    <div>
     <Store>
       <ChakraProvider theme={theme}>
         <Navbar></Navbar>
         <Body></Body>
       </ChakraProvider>
-    </div>
     </Store>
 
   );
