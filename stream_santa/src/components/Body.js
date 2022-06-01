@@ -1,6 +1,7 @@
 import * as React from 'react';
 import logo from '../assets/santa.png'
 import './Body.css'
+import { Context } from './Store'
 
 export default function Body() {
   return (

@@ -3,6 +3,7 @@ import './Navbar.css';
 import './Form'
 import Form from './Form';
 import { Flex } from '@chakra-ui/react'
+import { Context } from './Store'
 
 export default function Navbar() {
   return (
