@@ -27,7 +27,7 @@ export default function Form() {
 
   const onSubmit = async (values) => {
     const test = await axios.post('http://localhost:9090/watson', values);
-    console.log(test.data);
+    console.log(test);
     return new Promise((resolve) => {
       setTimeout(() => {
         alert(JSON.stringify(values, null, 2))
