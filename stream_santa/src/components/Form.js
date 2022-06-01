@@ -17,7 +17,7 @@ export default function Form() {
     years.push(i);
   }
   const runtimes = [];
-  for (let i = 250; i >= 1; i -= 1) {
+  for (let i = 200; i >= 1; i -= 1) {
     runtimes.push(i);
   }
 
@@ -31,14 +31,9 @@ export default function Form() {
 
   const onSubmit = async (values) => {
     const test = await axios.post('http://localhost:9090/watson', values);
-    console.log(test);
-    setService(test);
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        alert(JSON.stringify(values, null, 2))
-        resolve()
-      }, 3000)
-    })
+    const result = test.data.predictions[0].values[0][0]
+    setService(result);
+    console.log(service)
 }
 
   return (
@@ -118,7 +113,7 @@ export default function Form() {
                     >
                         <option value='2'>Feel Good</option>
                         <option value='1'>Indifferent</option>
-                        <option value='0'>Emotionally Complex</option>
+                        <option value='0'>Sad</option>
                     </Select>
                     <FormErrorMessage>
                     {errors.mood && errors.mood.message}

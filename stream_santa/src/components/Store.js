@@ -1,8 +1,6 @@
 import { useState, createContext } from 'react';
 
-const initialService = {
-    service: "none"
-};
+const initialService = 6;
 
 export const Context = createContext();
 
